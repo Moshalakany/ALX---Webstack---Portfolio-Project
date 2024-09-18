@@ -20,7 +20,6 @@ export const signup = async (req, res) => {
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
 
-		// https://avatar-placeholder.iran.liara.run/
 
 		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
 		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
@@ -71,6 +70,20 @@ export const login = async (req, res) => {
 			username: user.username,
 			profilePic: user.profilePic,
 		});
+		try {
+			await User
+				.findOneAndUpdate(
+					{ _id: user._id },
+					{ lastOnline: new Date()},	
+				)
+				console.log("last online time updated")
+			} catch (error) 
+			{
+				console.error('Error updating last online time:', error);
+			}
+			req.user = user;
+	
+	
 	} catch (error) {
 		console.log("Error in login controller", error.message);
 		res.status(500).json({ error: "Internal Server Error" });
