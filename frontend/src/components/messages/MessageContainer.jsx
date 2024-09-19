@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useConversation from "../../zustand/useConversation";
 import MessageInput from "./MessageInput";
-import {moment} from "moment-timezone";
+import { extractTime } from "../../utils/extractTime";
 import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
 import { useAuthContext } from "../../context/AuthContext";
@@ -25,7 +25,7 @@ const MessageContainer = () => {
  						 <input type="radio" name="my-accordion-2" defaultChecked />
  						 <div className="collapse-title text-xl font-medium">To: {selectedConversation.fullName  }</div>
  				 		<div className="collapse-content">
- 			   			<p> last online:{selectedConversation.lastOnline}</p>
+ 			   			<p> last online:{extractTime(selectedConversation.lastOnline)}</p>
 				  		</div>	
 					</div>				
 					<Messages />
