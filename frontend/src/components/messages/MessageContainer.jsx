@@ -21,10 +21,13 @@ const MessageContainer = () => {
 			) : (
 				<>
 					{/* Header */}
-					<div className='bg-slate-500 px-4 py-2 mb-2'>
-						<span className='label-text'>To:</span>{" "}
-						<span className='text-gray-900 font-bold'>{selectedConversation.fullName}{" last online:"}{selectedConversation.lastOnline}</span>
-					</div>
+					<div className="collapse collapse-arrow bg-base-200">
+ 						 <input type="radio" name="my-accordion-2" defaultChecked />
+ 						 <div className="collapse-title text-xl font-medium">To: {selectedConversation.fullName  }</div>
+ 				 		<div className="collapse-content">
+ 			   			<p> last online:{selectedConversation.lastOnline}</p>
+				  		</div>	
+					</div>				
 					<Messages />
 					<MessageInput />
 				</>
