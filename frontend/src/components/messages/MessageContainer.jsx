@@ -25,7 +25,7 @@ const MessageContainer = () => {
  						 <input type="radio" name="my-accordion-2" defaultChecked />
  						 <div className="collapse-title text-xl font-medium">To: {selectedConversation.fullName  }</div>
  				 		<div className="collapse-content">
- 			   			<p> last online:{extractTime(selectedConversation.lastOnline)}</p>
+ 			   			<p> last online:{extractTime(selectedConversation.lastOnline)+" on "+selectedConversation.lastOnline }</p>
 				  		</div>	
 					</div>				
 					<Messages />
