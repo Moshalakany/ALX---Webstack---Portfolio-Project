@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: frontend-app:latest
+        image: frontend-app-k8s:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
