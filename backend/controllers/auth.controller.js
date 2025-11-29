@@ -20,8 +20,6 @@ export const signup = async (req, res) => {
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
 
-
-
 		const newUser = new User({
 			fullName,
 			username,
@@ -46,6 +44,7 @@ export const signup = async (req, res) => {
 		}
 	} catch (error) {
 		console.log("Error in signup controller", error.message);
+		console.error("Full error:", error);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 };
