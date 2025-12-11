@@ -27,7 +27,7 @@ const protectRoute = async (req, res, next) => {
 				{ _id: user._id },
 				{ lastOnline: new Date()},	
 			)
-			console.log("last online time updated")
+			// console.log("last online time updated")
 		} catch (error) 
 		{
 			console.error('Error updating last online time:', error);

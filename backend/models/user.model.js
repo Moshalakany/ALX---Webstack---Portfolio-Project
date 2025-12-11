@@ -6,6 +6,11 @@ const userschema=new mongoose.Schema(
             required:true,
             trim:true , 
         },
+        email:{
+            type:String,
+            required:false,
+            unique:true,
+        },
         username:{
             type:String,
             required:true,
@@ -26,6 +31,13 @@ const userschema=new mongoose.Schema(
             type:String,
             default:"",
         },
+        friends:
+        [
+            {
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"User",
+            }
+        ],
         lastOnline: 
         {
             type: Date, default: Date.now 

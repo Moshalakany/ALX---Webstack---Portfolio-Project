@@ -1,6 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
+import { handleAuthError, isAuthError } from "../utils/handleAuthError";
 
 const useSignup = () => {
 	const [loading, setLoading] = useState(false);
@@ -28,6 +29,12 @@ const useSignup = () => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ fullName, username, password, confirmPassword, gender,profilepic }),
 			});
+			
+			if (isAuthError(res)) {
+				handleAuthError();
+				return;
+			}
+			
 			const data = await res.json();
 			if (data.error) {
 				throw new Error(data.error);
