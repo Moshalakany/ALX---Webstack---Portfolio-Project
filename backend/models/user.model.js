@@ -9,7 +9,7 @@ const userschema=new mongoose.Schema(
         email:{
             type:String,
             required:false,
-            unique:true,
+            sparse: true,
         },
         username:{
             type:String,
@@ -46,5 +46,9 @@ const userschema=new mongoose.Schema(
     },
     {timestamps:true}
 )
+
+// Create sparse unique index for email - only indexes documents where email exists
+userschema.index({ email: 1 }, { unique: true, sparse: true });
+
     const user =mongoose.model("User",userschema);
     export default user;
